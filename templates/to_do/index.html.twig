@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ToDoController!{% endblock %}
+
+{% block body %}
+    {% for success in app.flashes('success') %}
+       <p class="alert alert-success"> {{ success }}</p>
+    {% endfor %}
+
+    {% for erreur in app.flashes('erreur') %}
+        <p class="alert alert-danger">{{ erreur }}</p>
+    {% endfor %}
+
+{% if app.session.has("todo") %}
+    {% for cle, element in app.session.get('todo') %}
+        <h1 class="text-danger">{{ cle }}</h1>
+        <p>{{ element }}</p>
+    {% endfor %}
+{% endif %}
+{% endblock %}
+
